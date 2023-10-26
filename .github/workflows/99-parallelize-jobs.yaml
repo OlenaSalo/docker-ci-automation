@@ -38,7 +38,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ghcr.io/bretfisher/docker-ci-automation:${{ github.run_id }}
+          tags: ghcr.io/olenasalo/docker-ci-automation:${{ github.run_id }}
           target: test
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -63,7 +63,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Unit Testing in Docker
-        run: docker run --rm ghcr.io/bretfisher/docker-ci-automation:"$GITHUB_RUN_ID" echo "run test commands here"
+        run: docker run --rm ghcr.io/olenasalo/docker-ci-automation:"$GITHUB_RUN_ID" echo "run test commands here"
 
 # NEXT JOB #######################################################################   
   test-integration:
@@ -179,7 +179,7 @@ jobs:
       - name: Run Trivy for all CVEs (non-blocking)
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: ghcr.io/bretfisher/docker-ci-automation:${{ github.run_id }}
+          image-ref: ghcr.io/olenasalo/docker-ci-automation:${{ github.run_id }}
           format: table
           exit-code: 0
 
@@ -236,7 +236,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: olenasalo/docker-ci-automation,ghcr.io/bretfisher/docker-ci-automation
+          images: olenasalo/docker-ci-automation,ghcr.io/olenasalo/docker-ci-automation
           flavor: |
             latest=false
           tags: |
