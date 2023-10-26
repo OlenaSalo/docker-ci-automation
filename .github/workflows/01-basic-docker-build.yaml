@@ -24,4 +24,4 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: ${{ github.event_name != 'pull_request' }}
-          tags: olenksalo/docker-ci-automation:latest,olenksalo/docker-ci-automation:01
+          tags: olenasalo/docker-ci-automation:latest,olenasalo/docker-ci-automation:01
